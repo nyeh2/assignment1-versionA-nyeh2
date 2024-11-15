@@ -75,7 +75,7 @@ def after(date: str) -> str:
 
 def usage():
     "Print a usage message to the user"
-    ...
+    print("Usage: assignment1.py YYYY-MM-DD YYYY-MM-DD")
 
 
 def leap_year(year: int) -> bool:
@@ -92,7 +92,28 @@ def valid_date(date: str) -> bool:
 
 def day_count(start_date: str, stop_date: str) -> int:
     "Loops through range of dates, and returns number of weekend days"
-    ...
+    # Create a tracker for counting the number of weekend days
+    num_weekend_days = 0
+    # Set alias for start date to alter
+    tracker_date = start_date
+
+    # Checks to make sure that first date doesnt exceed stop date
+    while tracker_date <= stop_date:
+        # Splits each value using "-" as the seperator into year, month and day
+        str_year, str_month, str_day = tracker_date.split('-')
+        # Converts str values into int values
+        year = int(str_year)
+        month = int(str_month)
+        day = int(str_day)
+        # Use day_of_week function to assign name of day
+        name_of_day = day_of_week(year, month, day)
+        # Checks to see if the name_of_day is sat or sun add one to the counter
+        if name_of_day in ['sat','sun']:
+            num_weekend_days = num_weekend_days + 1
+        # Use the after function to cycle to the next date
+        tracker_date = after(tracker_date)
+
+    return num_weekend_days
 
 if __name__ == "__main__":
     ...
