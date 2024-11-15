@@ -135,4 +135,25 @@ def day_count(start_date: str, stop_date: str) -> int:
     return num_weekend_days
 
 if __name__ == "__main__":
-    ...
+    # Make sure there are 3 arguments to use the script
+    if len(sys.argv) != 3:
+        # Display Usage message if used incorrectly
+        usage()
+        # Close the program if used incorrectly
+        sys.exit()
+    # Assign the sys.argvs to variables
+    start_date = sys.argv[1]
+    end_date = sys.argv[2]
+    # Make sure the dates are valid via valid date function
+    if not valid_date(start_date) or not valid_date(end_date):
+        usage()
+        sys.exit()
+    # Check to see if the start date is after the end date
+    if start_date > end_date:
+        # If start date is after end date flip the dates
+        weekend_days = day_count(end_date, start_date)
+        print("The period between " + str(end_date) + ' and ' + str(start_date) + ' includes ' + str(weekend_days) + ' weekend days.')
+    else:
+        # If start date is before end date run the regular program
+        weekend_days = day_count(start_date, end_date)
+        print("The period between " + str(start_date) + ' and ' + str(end_date) + ' includes ' + str(weekend_days) + ' weekend days.')
