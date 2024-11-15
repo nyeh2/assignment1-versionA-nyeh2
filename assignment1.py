@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 '''
-OPS435 Assignment 1 - Summer 2023
+OPS435 Assignment 1 - Fall 2024
 Program: assignment1.py 
-Author: "Student Name"
-The python code in this file (a1_[Student_id].py) is original work written by
-"Student Name". No code in this file is copied from any other source
+Author: Nelson Yeh
+The python code in this file (a1_nyeh2.py) is original work written by
+Nelson Yeh. No code in this file is copied from any other source
 except those provided by the course instructor, including any person,
 textbook, or on-line resource. I have not shared this python script
 with anyone or anything except for submission for grading. I understand
@@ -68,7 +68,11 @@ def usage():
 
 def leap_year(year: int) -> bool:
     "return True if the year is a leap year"
-    ...
+    # Checks the definition of a leap year for the Gregorian calendar
+    if year % 4 == 0 and (year % 100 != 0 or year % 400 ==0):
+        return True
+    else:
+        return False
 
 def valid_date(date: str) -> bool:
     "check validity of date and return True if valid"
