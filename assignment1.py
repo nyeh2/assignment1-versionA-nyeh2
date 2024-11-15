@@ -88,7 +88,26 @@ def leap_year(year: int) -> bool:
 
 def valid_date(date: str) -> bool:
     "check validity of date and return True if valid"
-    ...
+    try:
+        # Splits each value using "-" as the seperator into year, month and day
+        str_year, str_month, str_day = date.split('-')
+        # Converts str values into int values
+        year = int(str_year)
+        month = int(str_month)
+        day = int(str_day)
+        # Checks for invalid months. Makes sure that month is not less than 1 or greater than 12 
+        if month < 1 or month > 12:
+            return False
+        # Checks for invalid days. Makes sure that day is not less than 1 or greater than number of days in selected month
+        if day < 1 or day > mon_max(month, year):
+            return False
+        # Checks for invalid years. Makes sure that year is not less than 1
+        if year < 1 or len(str_year) != 4:
+            return False
+        return True
+    except ValueError:
+        return False
+
 
 def day_count(start_date: str, stop_date: str) -> int:
     "Loops through range of dates, and returns number of weekend days"
